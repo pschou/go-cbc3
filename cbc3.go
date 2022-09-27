@@ -27,15 +27,15 @@ import (
 	"unsafe"
 )
 
-type cbc3 struct {
+type cbc struct {
 	b1, b2, b3 cipher.Block
 	blockSize  int
 	iv         []byte
 	tmp        []byte
 }
 
-func newCBC3(b1, b2, b3 cipher.Block, iv []byte) *cbc3 {
-	return &cbc3{
+func newCBC3(b1, b2, b3 cipher.Block, iv []byte) *cbc {
+	return &cbc{
 		b1:        b1,
 		b2:        b2,
 		b3:        b3,
@@ -45,7 +45,7 @@ func newCBC3(b1, b2, b3 cipher.Block, iv []byte) *cbc3 {
 	}
 }
 
-type cbc3Encrypter cbc3
+type cbc3Encrypter cbc
 
 // NewEncrypter returns a BlockMode which encrypts in cipher block chaining
 // mode, using the given three Blocks, all of which must have the same block
@@ -107,7 +107,7 @@ func (x *cbc3Encrypter) SetIV(iv []byte) {
 	copy(x.iv, iv)
 }
 
-type cbc3Decrypter cbc3
+type cbc3Decrypter cbc
 
 // NewDecrypter returns a BlockMode which decrypts in cipher block chaining
 // mode, using the given three Blocks, all of which must have the same block

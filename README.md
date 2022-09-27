@@ -35,7 +35,7 @@ func ExampleNewDecrypter() {
 	iv := ciphertext[:ivSize]
 	ciphertext = ciphertext[ivSize:]
 
-	mode := NewDecrypter(b1, b2, b3, iv)
+	mode := cbc3.NewDecrypter(b1, b2, b3, iv)
 
 	// CryptBlocks can work in-place if the two arguments are the same.
 	mode.CryptBlocks(ciphertext, ciphertext)
@@ -94,7 +94,7 @@ func ExampleNewEncrypter() {
 		panic(err)
 	}
 
-	mode := NewEncrypter(b1, b2, b3, iv)
+	mode := cbc3.NewEncrypter(b1, b2, b3, iv)
 	mode.CryptBlocks(ciphertext[ivSize:], plaintext)
 
 	// It's important to remember that ciphertexts must be authenticated
