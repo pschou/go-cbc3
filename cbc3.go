@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// CBC3 provides confidentiality by xoring (chaining) each plaintext block
-// with the previous ciphertext block while applying three block ciphers.
+// CBC3, Tripled Cipher Block Chaining, provides an inner-CBC method by XORing
+// (chaining) each plaintext block with the previous ciphertext block while
+// applying three block ciphers.  The block ciphers do not need to be of the
+// same kind, but they must match when decrypting.
 
-// Triple-CBC enables the ability to do SSH-1 Triple-DES.  This is done by
-// wrapping this CBC3 around the three DES block cipher. As SSH-1 replicates
+// Triple-CBC enables the ability to do SSH-1 style Triple-DES.  This is done
+// by wrapping this CBC3 around the three DES block cipher. As SSH-1 replicates
 // the whole CBC structure three times, there have to be three separate IVs,
-// one in each layer.
+// one in each of the two layers (outer and inner).
 
 package cbc3 // import "github.com/pschou/go-cbc3"
 

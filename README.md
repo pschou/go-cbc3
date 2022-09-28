@@ -29,7 +29,7 @@ the output would be the same as a single DES.  Hence with hardware which is
 designed to do 3DES and needs to work with hardware which does only DES, one
 can set two keys equal and get a single DES.  This is not the same as CBC3.
 
-CBC3 - is tripling Cipher Block Chaining mode agnostic of the block cipher
+CBC3 - is a tripled Cipher Block Chaining mode agnostic of the block cipher
 underneath.  Unlike 3DES vs DES, the notable differences starts with there are
 two sets of IVs which inserted into a CBC3, the first set is applied to the
 three block ciphers and used to generate the block ciphers, and the second set
