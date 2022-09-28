@@ -115,9 +115,9 @@ BenchmarkCBC3_AES256_Encrypt-12               54          20773274 ns/op ~4.4x
 ```
 
 Evident from the comparison, the CBC3 mode decreases the cipher speed around
-3-5x depending on the block cipher algorithm picked.  The CBC3 mode is it costs
-more per block to cipher.  Theoretically, this tripling does little to improve
-the overall quality of the stream cipher. (Biham)
+3-5x depending on the block cipher algorithm picked.  The CBC3 mode costs more
+per block to cipher.  Theoretically, this tripling does little to improve the
+overall quality of the stream cipher. (Biham)
 
 # Examples
 
