@@ -1,4 +1,4 @@
-module cbc3
+module github.com/pschou/go-cbc3
 
 go 1.17
 

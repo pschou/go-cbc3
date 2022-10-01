@@ -67,6 +67,7 @@ func NewEncrypter(b1, b2, b3 cipher.Block, iv []byte) cipher.BlockMode {
 func (x *cbc3Encrypter) BlockSize() int { return x.blockSize }
 
 func (x *cbc3Encrypter) CryptBlocks(dst, src []byte) {
+	// Check input for sane values
 	if len(src)%x.blockSize != 0 {
 		panic("crypto/cipher: input not full blocks")
 	}

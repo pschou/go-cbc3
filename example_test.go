@@ -1,4 +1,4 @@
-package cbc3
+package cbc3_test
 
 import (
 	"crypto/aes"

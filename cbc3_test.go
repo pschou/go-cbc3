@@ -1,4 +1,4 @@
-package cbc3
+package cbc3_test
 
 import (
 	"bytes"
@@ -7,6 +7,8 @@ import (
 	"encoding/base64"
 	"strings"
 	"testing"
+
+	cbc3 "github.com/pschou/go-cbc3"
 )
 
 var SSH1unencrypted = b64decode(`
@@ -51,7 +53,7 @@ func TestSSH1Encrypt(t *testing.T) {
 
 	unencrypted := SSH1unencrypted[195:]
 	copy(unencrypted, []byte{111, 130, 111, 130})
-	des3cbc3 := NewEncrypter(b1, b2, b3, make([]byte, 24))
+	des3cbc3 := cbc3.NewEncrypter(b1, b2, b3, make([]byte, 24))
 	new := make([]byte, len(unencrypted))
 	des3cbc3.CryptBlocks(new, unencrypted)
 
@@ -78,7 +80,7 @@ func TestSSH1Decrypt(t *testing.T) {
 	}
 
 	encrypted := SSH1encrypted[195:]
-	des3cbc3 := NewDecrypter(b1, b2, b3, make([]byte, 24))
+	des3cbc3 := cbc3.NewDecrypter(b1, b2, b3, make([]byte, 24))
 	new := make([]byte, len(encrypted))
 	des3cbc3.CryptBlocks(new, encrypted)
 
